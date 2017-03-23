@@ -1,6 +1,5 @@
 package algs.dp;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Stack;
 
@@ -31,40 +30,33 @@ public class PermutationOfSumK {
         }
         return dp;
     }
-    public static void permutationOfSumK(int n, int m){
+    public static void permutationOfSumK(int n, int m) {
         int[][] dp = getDP(n, m);
-        Stack<LinkedList<Integer>> stack = new Stack<>();
         //根据DP矩阵回溯求组合
         for (int i = n-1; i > -1; i--){
             if (dp[i][m] == 0){
                 break;
             }
-            //求解路径
-            LinkedList<Integer> res = new LinkedList<>();
-            path(dp, i, m, stack, res);
+            printPath(dp, i, m);
         }
     }
 
-    public static void path(int[][] dp, int i, int j, Stack<LinkedList<Integer>> stack, LinkedList<Integer> res){
-        if (i < 0 || j < 0 ){
-            return;
-        }
-        if (j - 1 > 0 && j - i -1 > 0)
-        res.add(i+1);
+    public static void printPath(int[][] dp, int i, int j){
+        System.out.print(i+1 + " ");
         if (i+1 == j){
-            stack.push(new LinkedList<>(res));
+            System.out.println();
             return;
         }
-        if (i+1 < j){
+        while (dp[i][j] != 0){
             j = j - i - 1;
-            res.add(j);
-            stack.push(new LinkedList<>(res));
-            res.pollLast();
-            path(dp, --i, j, stack, res);
+            if (j < 1){
+                break;
+            }
+            i--;
+            System.out.print(j  + " ");
         }
-
+        System.out.println();
     }
-
     public static void main(String[] args){
         int n = 7, m = 7;
         permutationOfSumK(n, m);
