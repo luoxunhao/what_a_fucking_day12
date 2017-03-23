@@ -1,4 +1,4 @@
-package algs.course1;
+package course1;
 
 /**
  * Created by lxh on 2017/3/22.
