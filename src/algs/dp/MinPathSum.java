@@ -1,7 +1,7 @@
 package algs.dp;
 
 /**
- * Created by lxh on 2017/3/23.
+ * 矩阵的最小路径和
  */
 public class MinPathSum {
     public static int minPathSum1(int[][] m){

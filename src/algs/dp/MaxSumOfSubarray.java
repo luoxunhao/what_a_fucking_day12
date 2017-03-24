@@ -1,7 +1,7 @@
 package algs.dp;
 
 /**
- * Created by lxh on 2017/3/23.
+ * 连续子数组最大和
  */
 public class MaxSumOfSubarray {
 

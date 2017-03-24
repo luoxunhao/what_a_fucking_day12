@@ -32,13 +32,14 @@ public class SalesManagerVisit {
         int xDir = ey > by ? 1 : -1;
         //构造DP矩阵，dp[x][y]表示经理走到(x,y)的路径数
         int[][] dp = new int[n][m]; //已经初始化为不能走的位置路径数为0
-        for (int y = by; y != ey + xDir; y += xDir){
+        dp[bx][by] = 1;
+        for (int y = by + xDir; y != ey + xDir; y += xDir){
             if (map[bx][y] == -1){
                 break;
             }
             dp[bx][y] = 1;
         }
-        for (int x = bx; x != ex + yDir; x += yDir){
+        for (int x = bx + yDir; x != ex + yDir; x += yDir){
             if (map[x][by] == -1){
                 break;
             }
