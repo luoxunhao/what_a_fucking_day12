@@ -33,36 +33,25 @@ public class PermutationOfSumK {
     }
     public static void permutationOfSumK(int n, int m){
         int[][] dp = getDP(n, m);
-        Stack<LinkedList<Integer>> stack = new Stack<>();
-        //根据DP矩阵回溯求组合
-        for (int i = n-1; i > -1; i--){
-            if (dp[i][m] == 0){
-                break;
-            }
-            //求解路径
-            LinkedList<Integer> res = new LinkedList<>();
-            path(dp, i, m, stack, res);
-        }
+        LinkedList<Integer> list = new LinkedList<>();
+        path(m, n, list);
     }
 
-    public static void path(int[][] dp, int i, int j, Stack<LinkedList<Integer>> stack, LinkedList<Integer> res){
-        if (i < 0 || j < 0 ){
+    public static void path(int sum, int n, LinkedList<Integer> list){
+        if (sum == 0){
+            while (!list.isEmpty()){
+                System.out.print(list.pollFirst()+" ");
+            }
+            System.out.println();
             return;
         }
-        if (j - 1 > 0 && j - i -1 > 0)
-        res.add(i+1);
-        if (i+1 == j){
-            stack.push(new LinkedList<>(res));
+        if (sum < 0 || n < 1){
             return;
         }
-        if (i+1 < j){
-            j = j - i - 1;
-            res.add(j);
-            stack.push(new LinkedList<>(res));
-            res.pollLast();
-            path(dp, --i, j, stack, res);
-        }
-
+        list.addFirst(n);
+        path(sum - n, n - 1, list);
+        list.pollFirst();
+        path(sum, n - 1, list);
     }
 
     public static void main(String[] args){
