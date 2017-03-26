@@ -1,4 +1,4 @@
-package algs.string;
+package algs.array;
 
 import java.util.Map;
 import java.util.Scanner;
