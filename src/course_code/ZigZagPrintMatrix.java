@@ -1,4 +1,4 @@
-package course1;
+package course_code;
 
 /**
  * Created by lxh on 2017/3/22.

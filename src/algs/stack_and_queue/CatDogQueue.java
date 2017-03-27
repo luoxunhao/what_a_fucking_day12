@@ -6,7 +6,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 /**
- * Created by lxh on 2017/3/26.
+ * 有一个重要的时间戳概念需要记住
  */
 public class CatDogQueue {
     public static class Pet {
@@ -36,7 +36,7 @@ public class CatDogQueue {
     //用户不能改变原始数据结构，需要自定义一个数据结构
     public static class PetEnterQueue{
         private Pet pet;
-        private int id;
+        private int id; //时间戳，表示入列的顺序
 
         public PetEnterQueue(Pet pet, int id) {
             this.pet = pet;
