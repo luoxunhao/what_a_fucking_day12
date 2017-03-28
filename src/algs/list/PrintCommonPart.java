@@ -4,6 +4,13 @@ package algs.list;
  * Created by lxh on 2017/3/26.
  */
 public class PrintCommonPart {
+    static class ListNode{
+        int val;
+        ListNode next = null;
+        public ListNode(int val) {
+            this.val = val;
+        }
+    }
     public static void printCommonPart(ListNode head1, ListNode head2){
         ListNode cur1 = head1;
         ListNode cur2 = head2;
