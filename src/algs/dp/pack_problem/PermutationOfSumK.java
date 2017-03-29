@@ -1,7 +1,4 @@
-package algs.dp;
-
-import java.util.LinkedList;
-import java.util.Stack;
+package algs.dp.pack_problem;
 
 /**
  * 输入两个整数 n 和 m，从数列1，2，3.......n 中随意取几个数,使其和等于 m ,要求将其中所有的可能组合列出来
@@ -13,19 +10,16 @@ public class PermutationOfSumK {
             return null;
         }
         n = n > m ? m : n;
-        int[][] dp = new int[n][m+1];
-        //第一行只有dp[0][1] = 1，第一列全部为0
-        dp[0][1] = 1;
-        //dp[i][j]
-        for (int i = 1; i < n ; i++){
-            for (int j = 1; j < m + 1; j++){
-                int extra = 0;
-                if (i+1 == j){
-                    extra = 1;
-                }else if (i+1 < j){
-                    extra = dp[i-1][j-i-1];
-                }
-                dp[i][j] = dp[i-1][j] + extra;
+        int[][] dp = new int[n+1][m+1];
+        dp[0][0]=1;
+        //第一列。第一行除了第一列，其他全为0
+        for (int i = 1; i < n+1; i++){
+            dp[i][0]=1;
+        }
+        for (int i = 1; i < n+1; i++){
+            for (int j = 1; j < m+1; j++){
+                dp[i][j] = dp[i-1][j];
+                dp[i][j] += j - i >= 0 ? dp[i-1][j-i] : 0;
             }
         }
         return dp;
@@ -58,7 +52,7 @@ public class PermutationOfSumK {
         System.out.println();
     }
     public static void main(String[] args){
-        int n = 7, m = 7;
+        int n = 5, m = 5;
         permutationOfSumK(n, m);
     }
 }

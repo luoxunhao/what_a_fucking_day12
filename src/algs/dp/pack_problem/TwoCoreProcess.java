@@ -1,4 +1,4 @@
-package algs.dp;
+package algs.dp.pack_problem;
 
 /*
 链接：https://www.nowcoder.com/questionTerminal/9ba85699e2824bc29166c92561da77fa
