@@ -35,7 +35,7 @@ import java.util.TreeMap;
  输出例子:
  1 2
  */
-public class NumberOfMaxMinDiff {
+public class NumberOfMaxAndMinDiff {
     public static int[] findNumberOfMaxAndMinDiff(int[] arr){
         TreeMap<Integer, Integer> map = new TreeMap<>();
         for (int i = 0; i < arr.length; i++){
