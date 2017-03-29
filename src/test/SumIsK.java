@@ -1,6 +1,5 @@
 package test;
 
-import javax.print.DocFlavor;
 import java.util.Scanner;
 
 /**
