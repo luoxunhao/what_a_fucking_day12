@@ -3,7 +3,7 @@ package algs.list;
 /**
  * Created by lxh on 2017/3/29.
  */
-public class Review_PartitionList {
+public class PartitionList {
     static class Node{
         public int value;
         public Node next;
