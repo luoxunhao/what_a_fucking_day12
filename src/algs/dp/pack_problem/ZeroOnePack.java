@@ -12,12 +12,12 @@ public class ZeroOnePack {
         for (int j = 0; j < V+1; j++){
             dp[j] = weight[0] <= j ? value[0] : 0;
         }
-        //从后往前更新
-        for (int i = 0; i < weight.length; i++){
-            for (int j = V; j > 0; j--){
-                if (weight[i] <= j){
+        //0-1背包，从后往前更新
+        for (int i = 1; i < weight.length; i++){
+            for (int j = V; j >= weight[i]; j--){
+                //if (weight[i] <= j){
                     dp[j] = Math.max(dp[j], dp[j-weight[i]] + value[i]);
-                }
+                //}
             }
         }
         return dp[V];
