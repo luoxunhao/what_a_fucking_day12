@@ -1,6 +1,7 @@
 package algs.dp.coins_problem;
 
 /**
+ * 换钱的方法数
  * 硬币不可重复使用，0-1背包
  */
 public class CoinsMethodsII {
@@ -29,7 +30,7 @@ public class CoinsMethodsII {
         if (arr[0] <= n){
             dp[arr[0]] = 1;
         }
-        //从后往前更新
+        //从后往前更新,dp[i][j]与dp[i-1][j]、dp[i-1][j-arr[i]]有关，因此不能先更新dp[i][j-arr[i]]（即从前往后）
         for (int i = 1; i < 4; i++){
             for (int j = n; j > 0; j--){
                 dp[j] += j-arr[i] >= 0 ? dp[j-arr[i]] : 0;
