@@ -1,9 +1,9 @@
 package algs.dp.coins_problem;
 
 /**
- * Created by lxh on 2017/4/5.
+ * 硬币可重复使用
  */
-public class CoinsMethods {
+public class CoinsMethodsI {
     public int countWays(int n) {
         int[] arr = {1, 5, 10, 25};
         int[] dp = new int[n+1];
