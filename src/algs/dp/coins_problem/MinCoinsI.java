@@ -1,7 +1,7 @@
 package algs.dp.coins_problem;
 
 /**
- * Created by lxh on 2017/4/5.
+ * 货币可重复使用
  */
 public class MinCoinsI {
 }
