@@ -3,7 +3,9 @@ package algs.dfs;
 import java.util.Scanner;
 
 /**
- * Created by lxh on 2017/4/6.
+ * 有一个大小为N×M的园子，雨后积起了水。八连通的积水被认为是连接在一起的。请求出
+ 园子里总共有多少水洼？
+ POJ #2386
  */
 public class LakeCount {
     private static char[][] map;

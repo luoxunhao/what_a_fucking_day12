@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.Scanner;
 
 /**
- * Created by lxh on 2017/4/6.
+ * 迷宫的最短路径
  */
 public class Maze2 {
     private static char[][] map;
