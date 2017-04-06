@@ -27,18 +27,17 @@ public class PathInMatrix {
         if (cx < 0 || cx >= rows || cy < 0 || cy >= cols){
             return false;
         }
-        if (!visit[cx*cols + cy] && )
-        visit[cx*cols + cy] = true;
-        for (int i = 0; i < 4; i++){
-            int nx = cx + dx[i];
-            int ny = cy + dy[i];
-
-            if (dfs(matrix,rows,cols,str,visit,nx,ny,pos+1)){
-                return true;
+        if (!visit[cx*cols + cy] && matrix[cx*cols + cy] == str[pos]) {
+            visit[cx * cols + cy] = true;
+            for (int i = 0; i < 4; i++) {
+                int nx = cx + dx[i];
+                int ny = cy + dy[i];
+                if (dfs(matrix, rows, cols, str, visit, nx, ny, pos + 1)) {
+                    return true;
+                }
             }
-
+            visit[cx * cols + cy] = false;
         }
-
         return false;
     }
 }
