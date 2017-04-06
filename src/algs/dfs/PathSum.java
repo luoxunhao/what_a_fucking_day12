@@ -65,7 +65,7 @@ public class PathSum {
             paths.add(new ArrayList<>(path));
             return;
         }else if(target < node.val){
-            return;
+            return; //剪枝
         }
         dps(paths, new ArrayList<>(path), node.left, target-node.val);
         dps(paths, new ArrayList<>(path), node.right, target-node.val);

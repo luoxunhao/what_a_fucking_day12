@@ -22,7 +22,7 @@ public class PermutationOfSumK {
             print(res);
             return;
         }else if (sum > m){
-            return;
+            return; //剪枝
         }
         dfs(new ArrayList<>(res),pos+1,n,sum,m);
         res.remove(res.size()-1);
