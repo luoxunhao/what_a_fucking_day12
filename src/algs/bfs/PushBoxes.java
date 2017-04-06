@@ -1,4 +1,4 @@
-package algs.graph;
+package algs.bfs;
 
 
 import java.util.LinkedList;

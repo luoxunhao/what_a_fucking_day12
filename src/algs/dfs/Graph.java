@@ -1,4 +1,4 @@
-package algs.graph;
+package algs.dfs;
 
 import java.util.LinkedList;
 import java.util.Queue;
