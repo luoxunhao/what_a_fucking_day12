@@ -21,24 +21,24 @@ public class PathInMatrix {
         return false;
     }
     public static boolean dfs(char[] matrix, int rows, int cols, char[] str, boolean[] visit, int cx, int cy, int pos){
-        if (pos == str.length-1){
-            if (matrix[cx*rows+cy] == str[pos]){
-                return true;
-            }else {
-                return false;
-            }
+        if (pos == str.length){
+            return true;
         }
+        if (cx < 0 || cx >= rows || cy < 0 || cy >= cols){
+            return false;
+        }
+        if (!visit[cx*cols + cy] && )
         visit[cx*cols + cy] = true;
         for (int i = 0; i < 4; i++){
             int nx = cx + dx[i];
             int ny = cy + dy[i];
-            if (nx >= 0 && nx < rows && ny >= 0 && ny < cols && matrix[nx*cols + ny] == str[pos+1] && !visit[nx*cols + ny]){
-                if (dfs(matrix,rows,cols,str,visit,nx,ny,pos+1)){
-                    return true;
-                }
+
+            if (dfs(matrix,rows,cols,str,visit,nx,ny,pos+1)){
+                return true;
             }
+
         }
-        visit[cx*cols + cy] = false;
+
         return false;
     }
 }
