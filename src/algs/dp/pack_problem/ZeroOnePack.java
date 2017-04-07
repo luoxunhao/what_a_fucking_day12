@@ -1,11 +1,18 @@
 package algs.dp.pack_problem;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
  * Created by lxh on 2017/3/29.
  */
 public class ZeroOnePack {
+    private static int[] weight;
+    private static int[] value;
+    private static int n;
+    private static int V;
+    private static int[][] memo;
+
     public static int maxValue(int[] weight, int[] value, int V){
         int[] dp = new int[V+1];
         //初始化第一行
@@ -25,15 +32,44 @@ public class ZeroOnePack {
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
         while (sc.hasNext()){
-            int n = sc.nextInt();
-            int V = sc.nextInt();
-            int[] weight = new int[n];
-            int[] value = new int[n];
+            n = sc.nextInt();
+            V = sc.nextInt();
+            weight = new int[n];
+            value = new int[n];
+            memo = new int[n][V+1];
+            Arrays.fill(memo,-1);
             for (int i = 0; i < n; i++){
                 weight[i] = sc.nextInt();
                 value[i] = sc.nextInt();
             }
             System.out.println(maxValue(weight,value,V));
         }
+    }
+
+    public static int solve1(int i, int j){
+        int res;
+        if (i == n){
+            res = 0;
+        }else if (weight[i] > j){
+            res = solve1(i+1,j);
+        }else {
+            res = Math.max(solve1(i+1,j),solve1(i+1,j-weight[i])+value[i]);
+        }
+        return res;
+    }
+
+    public static int solve2(int i, int j){
+        if (memo[i][j] != -1){
+            return memo[i][j];
+        }
+        int res;
+        if (i == n){
+            res = 0;
+        }else if (weight[i] > j){
+            res = solve2(i+1,j);
+        }else {
+            res = Math.max(solve2(i+1,j),solve2(i+1,j-weight[i])+value[i]);
+        }
+        return memo[i][j] = res;
     }
 }
