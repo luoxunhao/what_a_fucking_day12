@@ -5,7 +5,7 @@ package coding;
  */
 public class LCA {
     public static TreeNode lca(TreeNode root, TreeNode node1, TreeNode node2){
-        if (root == null || node1 == root || node2 == root){
+        if (root == null || root == node1 || root == node2){
             return root;
         }
         TreeNode leftTree = lca(root.left, node1, node2);
@@ -58,8 +58,8 @@ public class LCA {
         printTree(head);
         System.out.println("===============");
 
-        TreeNode o1 = head.left.right;
-        TreeNode o2 = head.right.left;
+        TreeNode o1 = head.left.left;
+        TreeNode o2 = head.right.right.left;
 
         // 单次查询--原问题
         System.out.println("o1 : " + o1.val);
