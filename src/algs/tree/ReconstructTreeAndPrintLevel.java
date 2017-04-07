@@ -1,12 +1,13 @@
 package algs.tree;
 
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Scanner;
 
 /**
  * Created by lxh on 2017/4/7.
  */
-public class ReconstructTree {
+public class ReconstructTreeAndPrintLevel {
     private static class TreeNode{
         int val;
         TreeNode left = null;
@@ -59,6 +60,24 @@ public class ReconstructTree {
         printPre(root.right);
     }
 
+    public static void printLevel(TreeNode root){
+        if (root == null){
+            return;
+        }
+        LinkedList<TreeNode> queue = new LinkedList<>();
+        queue.addLast(root);
+        while (!queue.isEmpty()){
+            TreeNode cur = queue.pollFirst();
+            System.out.print(cur.val + " ");
+            if (cur.left != null){
+                queue.addLast(cur.left);
+            }
+            if (cur.right != null){
+                queue.addLast(cur.right);
+            }
+        }
+    }
+
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
         while (sc.hasNext()){
@@ -74,6 +93,8 @@ public class ReconstructTree {
             init();
             TreeNode root = solve(0,n-1,0,n-1);
             printPre(root);
+            System.out.println();
+            printLevel(root);
         }
     }
 }
