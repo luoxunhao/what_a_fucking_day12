@@ -9,9 +9,10 @@ import java.util.Scanner;
 public class ZeroOnePack {
     private static int[] weight;
     private static int[] value;
-    private static int n;
+    private static int N;
     private static int V;
     private static int[][] memo;
+    private static int[][] dp;
 
     public static int maxValue(int[] weight, int[] value, int V){
         int[] dp = new int[V+1];
@@ -32,13 +33,13 @@ public class ZeroOnePack {
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
         while (sc.hasNext()){
-            n = sc.nextInt();
+            N = sc.nextInt();
             V = sc.nextInt();
-            weight = new int[n];
-            value = new int[n];
-            memo = new int[n][V+1];
+            weight = new int[N];
+            value = new int[N];
+            memo = new int[N][V+1];
             Arrays.fill(memo,-1);
-            for (int i = 0; i < n; i++){
+            for (int i = 0; i < N; i++){
                 weight[i] = sc.nextInt();
                 value[i] = sc.nextInt();
             }
@@ -48,7 +49,7 @@ public class ZeroOnePack {
 
     public static int solve1(int i, int j){
         int res;
-        if (i == n){
+        if (i == N){
             res = 0;
         }else if (weight[i] > j){
             res = solve1(i+1,j);
@@ -63,7 +64,7 @@ public class ZeroOnePack {
             return memo[i][j];
         }
         int res;
-        if (i == n){
+        if (i == N){
             res = 0;
         }else if (weight[i] > j){
             res = solve2(i+1,j);
@@ -72,4 +73,6 @@ public class ZeroOnePack {
         }
         return memo[i][j] = res;
     }
+
+
 }
