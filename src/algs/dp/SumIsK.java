@@ -16,17 +16,17 @@ public class SumIsK {
     /*
     暴力搜索
      */
-    public static boolean dfs(int i, int sum){
+    public static boolean dfs(int i, int j){
         if (i == n){
-            return sum == k;
+            return j == k;
         }
-        if (sum > k){
+        if (j > k){
             return false;
         }
-        if (dfs(i+1, sum + a[i])){
+        if (dfs(i+1, j + a[i])){
             return true;
         }
-        if (dfs(i+1, sum)){
+        if (dfs(i+1, j)){
             return true;
         }
         return false;
@@ -35,13 +35,25 @@ public class SumIsK {
     /*
     记忆化搜索
      */
+    /*
+    private static boolean[][] memo = new boolean[10001][10001];
+    public static boolean solve(int i, int j){
+        if (i == n){
+            return j == k;
+        }
+        if (memo[i][j]){
+            return memo[i][j];
+        }
+        boolean res = false;
+        res |= solve(i+1, j) || solve(i+1, j+a[i]);
+        return memo[i][j] = res;
+    }*/
 
     /*
     动态规划
      */
     private static boolean[][] dp = new boolean[10001][10001];
     public static boolean dp(){
-        //Arrays.fill(dp, false);
         dp[0][0] = true;
         for (int i = 1; i <= n; i++){
             dp[i][0] = true;
@@ -54,6 +66,8 @@ public class SumIsK {
     }
 
     public static void main(String[] args){
+        //Arrays.fill(memo, false);
+        //Arrays.fill(dp, false);
         Scanner sc = new Scanner(System.in);
         while (sc.hasNext()){
             n = sc.nextInt();
