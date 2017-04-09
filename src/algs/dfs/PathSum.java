@@ -55,45 +55,6 @@ public class PathSum {
         path.remove(path.size()-1);
     }
 
-    public static ArrayList<ArrayList<Integer>> FindPath2(TreeNode root, int target){
-        if (root == null){
-            return null;
-        }
-        ArrayList<ArrayList<Integer>> paths = new ArrayList<>();
-        ArrayList<Integer> path = new ArrayList<>();
-        Stack<TreeNode> stack = new Stack<>();
-        stack.add(root);
-        int sum = 0;
-        while (!stack.isEmpty()){
-            TreeNode cur = stack.pop();
-            if (cur == root.right){
-                sum = root.val;
-                path = new ArrayList<>();
-                path.add(root.val);
-            }
-            sum += cur.val;
-            path.add(cur.val);
-            if (cur.left == null && cur.right == null){
-                if (sum == target){
-                    paths.add(new ArrayList<>(path));
-                }
-                sum -= cur.val;
-                path.remove(path.size()-1);
-                continue;
-            }else if (sum > target){
-                sum -= cur.val;
-                path.remove(path.size()-1);
-                continue;
-            }
-            if (cur.right != null){
-                stack.add(cur.right);
-            }
-            if (cur.left != null){
-                stack.add(cur.left);
-            }
-        }
-        return paths;
-    }
 
     public static void main(String[] args) {
         TreeNode head = new TreeNode(10);
@@ -101,6 +62,7 @@ public class PathSum {
         head.right = new TreeNode(12);
         head.left.left = new TreeNode(4);
         head.left.right = new TreeNode(7);
-        FindPath2(head,22);
+        head.left.left.left = new TreeNode(3);
+        //FindPath1(head,22);
     }
 }
