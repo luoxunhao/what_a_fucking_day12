@@ -24,7 +24,7 @@ import java.util.Scanner;
 输出例子:
 2
  */
-public class TwoDimZeroOnePack {
+public class NewWorld {
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
         while (sc.hasNext()){
@@ -90,7 +90,7 @@ public class TwoDimZeroOnePack {
 
 
 /*
-public class TwoDimZeroOnePack {
+public class NewWorld {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         while(sc.hasNext()) {
