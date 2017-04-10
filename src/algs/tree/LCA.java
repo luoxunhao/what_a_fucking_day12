@@ -52,15 +52,14 @@ public class LCA {
         if (root == node){
             return true;
         }
-        boolean find = false;
-        find = getNodePath(path,root.left,node);
-        if (!find){
-            find = getNodePath(path,root.right,node);
+        if (getNodePath(path,root.left,node)){
+            return true;
         }
-        if (!find){
-            path.pollLast();
+        if (getNodePath(path,root.right,node)){
+            return true;
         }
-        return find;
+        path.pollLast();
+        return false;
     }
 
     public static void main(String[] args) {

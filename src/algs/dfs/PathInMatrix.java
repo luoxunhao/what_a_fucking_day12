@@ -10,12 +10,9 @@ public class PathInMatrix {
         boolean[] visit = new boolean[rows*cols];
         for (int i = 0; i < rows; i++){
             for (int j = 0; j < cols; j++){
-                //if (matrix[i*rows+j] == str[0]){
-                    //boolean[] visit = new boolean[rows*cols];
                     if (dfs(matrix,rows,cols,str,visit,i,j,0)){
                         return true;
                     }
-                //}
             }
         }
         return false;
