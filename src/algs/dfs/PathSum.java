@@ -47,8 +47,6 @@ public class PathSum {
         if (target == node.val && node.left == null && node.right == null){
             paths.add(new ArrayList<>(path));
             return;
-        }else if(target < node.val){
-            return; //剪枝
         }
         dfs(paths, new ArrayList<>(path), node.left, target-node.val);
         dfs(paths, new ArrayList<>(path), node.right, target-node.val);
