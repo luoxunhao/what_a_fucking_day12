@@ -25,6 +25,7 @@ public class LCS {
         int M = str2.length;
         dp = new int[N+1][M+1];
         for (int i = 1; i <= N; i++){
+            //dp[i][0]赋值
             for (int j = 1; j <= M; j++){
                 dp[i][j] = Math.max(dp[i-1][j], dp[i][j-1]);
                 if (str1[i-1] == str2[j-1]){
