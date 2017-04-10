@@ -29,34 +29,38 @@ public class LCA {
         return left != null ? left : right;
     }
 
-    public static void getPath(ArrayList<LinkedList<Node>> paths, LinkedList<Node> path, Node root, Node node1, Node node2){
-        if (root == null){
-            return;
+    public static Node getLCA(LinkedList<Node> path1, LinkedList<Node> path2){
+        Node lca = null;
+        while (!path1.isEmpty() && !path2.isEmpty()){
+            if (path1.getFirst() == path2.getFirst()){
+                lca = path1.getFirst();
+            }
+            path1.pollFirst();
+            path2.pollFirst();
         }
-        path.addFirst(root);
-        if (root == node1 || root == node2){
-            paths.add(new LinkedList<>(path));
-            return;
-        }
-        getPath(paths,new LinkedList<>(path), root.left, node1,node2);
-        getPath(paths,new LinkedList<>(path),root.right,node1,node2);
-        path.pollFirst();
+        return lca;
     }
 
-    public static Node getLCA(ArrayList<LinkedList<Node>> paths){
-        int len1 = paths.get(0).size();
-        int len2 = paths.get(1).size();
-        LinkedList<Node> large = len1 > len2 ? paths.get(0) : paths.get(1);
-        LinkedList<Node> small = large == paths.get(0) ? paths.get(1) : paths.get(0);
-        int len = large.size() - small.size();
-        while (len-- > 0){
-            large.pollFirst();
+    /*
+    可以用在多叉树的lca上
+     */
+    public static boolean getNodePath(LinkedList<Node> path, Node root, Node node){
+        if (root == null){
+            return false;
         }
-        while (large.getFirst() != small.getFirst()){
-            large.pollFirst();
-            small.pollFirst();
+        path.add(root);
+        if (root == node){
+            return true;
         }
-        return large.getFirst();
+        boolean find = false;
+        find = getNodePath(path,root.left,node);
+        if (!find){
+            find = getNodePath(path,root.right,node);
+        }
+        if (!find){
+            path.pollLast();
+        }
+        return find;
     }
 
     public static void main(String[] args) {
@@ -77,10 +81,11 @@ public class LCA {
         System.out.println("o1 : " + o1.val);
         System.out.println("o2 : " + o2.val);
         System.out.println("===============");
-        LinkedList<Node> path = new LinkedList<>();
-        ArrayList<LinkedList<Node>> paths = new ArrayList<>();
-        getPath(paths, path, head, head.left.right, head.left.left);
-        Node lca = getLCA(paths);
+        LinkedList<Node> path2 = new LinkedList<>();
+        LinkedList<Node> path1 = new LinkedList<>();
+        getNodePath(path1,head,head.left.right);
+        getNodePath(path2,head,head.right.right.left);
+        Node lca = getLCA(path1,path2);
     }
 
 }
