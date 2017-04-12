@@ -48,8 +48,8 @@ public class PathSum {
             paths.add(new ArrayList<>(path));
             return;
         }
-        dfs(paths, new ArrayList<>(path), node.left, target-node.val);
-        dfs(paths, new ArrayList<>(path), node.right, target-node.val);
+        dfs(paths, path, node.left, target-node.val);
+        dfs(paths, path, node.right, target-node.val);
         path.remove(path.size()-1);
     }
 
@@ -61,6 +61,6 @@ public class PathSum {
         head.left.left = new TreeNode(4);
         head.left.right = new TreeNode(7);
         head.left.left.left = new TreeNode(3);
-        //FindPath1(head,22);
+        ArrayList<ArrayList<Integer>> res = FindPath(head,22);
     }
 }
