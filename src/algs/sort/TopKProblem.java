@@ -1,5 +1,7 @@
 package algs.sort;
 
+import java.util.Comparator;
+import java.util.PriorityQueue;
 import java.util.Scanner;
 
 /**
@@ -61,6 +63,36 @@ public class TopKProblem {
         arr[j] = tmp;
     }
 
+    public static int[] getKthMin(int[] arr, int n, int k){
+        if (arr == null || arr.length < k){
+            return null;
+        }
+        PriorityQueue<Integer> queue = new PriorityQueue<>(new Comparator<Integer>() {
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                if (o1 > o2){
+                    return -1;
+                }else {
+                    return 1;
+                }
+            }
+        });
+        for (int i = 0; i < k; i++){
+            queue.add(arr[i]);
+        }
+        for (int i = k; i < n; i++){
+            if (arr[i] < queue.peek()){
+                queue.poll();
+                queue.add(arr[i]);
+            }
+        }
+        int[] res = new int[k];
+        for (int i = 0; i < k; i++){
+            res[i] = queue.poll();
+        }
+        return res;
+    }
+
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
         while (sc.hasNext()){
@@ -69,7 +101,11 @@ public class TopKProblem {
             for (int i = 0; i < n; i++){
                 arr[i] = sc.nextInt();
             }
-            solve();
+            //solve();
+            int[] res = getKthMin(arr,n,k);
+            for (int i = 0; i < res.length; i++){
+                System.out.print(res[i] + " ");
+            }
         }
     }
 }
