@@ -26,23 +26,24 @@ public class TopKProblem {
     }
 
     public static void heapify(int i, int size){
-        int left = i*2 + 1;
-        int right = 1*2 + 2;
-        if (left > size){
-            return;
-        }
+        int left = i * 2 + 1, right = i * 2 + 2;
         int largest = i;
-        if (arr[largest] <= arr[left]){
-            largest = left;
+        while (left < size){
+            if (arr[largest] < arr[left]){
+                largest = left;
+            }
+            if (right < size && arr[largest] < arr[right]){
+                largest = right;
+            }
+            if (largest != i){
+                swap(largest,i);
+            }else {
+                break;
+            }
+            i = largest;
+            left = i*2 + 1;
+            right = i*2 + 2;
         }
-        if (right < size && arr[largest] <= arr[right]){
-            largest = right;
-        }
-        if (i == largest){
-            return;
-        }
-        swap(i, largest);
-        heapify(largest, size);
     }
 
     public static void solve(){
@@ -101,7 +102,7 @@ public class TopKProblem {
             for (int i = 0; i < n; i++){
                 arr[i] = sc.nextInt();
             }
-            //solve();
+            solve();
             int[] res = getKthMin(arr,n,k);
             for (int i = 0; i < res.length; i++){
                 System.out.print(res[i] + " ");
