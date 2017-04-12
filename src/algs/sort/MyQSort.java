@@ -2,9 +2,7 @@ package algs.sort;
 
 import java.util.ArrayList;
 
-/**
- * 《大话数据结构》中关于快排的优化
- */
+
 public class MyQSort {
 
     /**

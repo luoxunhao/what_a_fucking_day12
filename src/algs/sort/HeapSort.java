@@ -88,7 +88,7 @@ public class HeapSort {
     public static void swap(int[] arr, int i, int j){
         int tmp = arr[i];
         arr[i] = arr[j];
-        arr[j] = arr[i];
+        arr[j] = tmp;
     }
 
     public static void main(String[] args){
