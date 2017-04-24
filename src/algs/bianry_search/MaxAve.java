@@ -1,4 +1,4 @@
-package algs.bianey_search;
+package algs.bianry_search;
 
 import java.util.Scanner;
 
