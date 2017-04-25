@@ -29,12 +29,12 @@ public class LongestIncrementSubsquence {
         int[] dp = new int[nums.length];
         int len = 0;
         for(int x : nums) {
-            int i = Arrays.binarySearch(dp, 0, len, x);
-            if(i < 0) {
-                i = -(i + 1);
+            int idx = Arrays.binarySearch(dp, 0, len, x);
+            if(idx < 0) {
+                idx = -(idx + 1);
             }
-            dp[i] = x;
-            if(i == len) {
+            dp[idx] = x;
+            if(idx == len) {
                 len++;
             }
         }
@@ -50,11 +50,24 @@ public class LongestIncrementSubsquence {
             @Override
             public int compare(int[] o1, int[] o2) {
                 if (o1[0] == o2[0]){
-                    return o1[1] - o2[1];
+                    return o2[1] - o1[1];
                 }else {
-                    return o2[0] - o1[0];
+                    return o1[0] - o2[0];
                 }
             }
         });
+        int[] dp = new int[n];
+        int len = 0;
+        for (int[] e : es){
+            int idx = Arrays.binarySearch(dp, 0, len, e[1]);
+            if (idx < 0){
+                idx = -(idx + 1);
+            }
+            dp[idx] = e[1];
+            if (idx == len){
+                len++;
+            }
+        }
+        return len;
     }
 }
