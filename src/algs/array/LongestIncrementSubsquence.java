@@ -25,70 +25,36 @@ public class LongestIncrementSubsquence {
         return res;
     }
 
-    public static int getLIS2(int[] arr, int n){
-        if (arr == null || n < 1){
-            return 0;
-        }
-        int dp[] = new int[n];
-        int ends[] = new int[n];
-        ends[0] = arr[0];
-        dp[0] = 1;
+    public int lengthOfLIS(int[] nums) {
+        int[] dp = new int[nums.length];
         int len = 0;
-        for (int i = 1; i < n; i++){
-            int l = 0;
-            int r = len;
-            while (r - l > 1){
-                int mid = (l + r) / 2;
-                if (ends[mid] > arr[i]){ //找到第一个大于arr[i]的位置
-                    r = mid;
-                }else {
-                    l = mid;
-                }
+        for(int x : nums) {
+            int i = Arrays.binarySearch(dp, 0, len, x);
+            if(i < 0) {
+                i = -(i + 1);
             }
-            len = Math.max(len, l);
-            ends[l] = arr[i];
-            dp[i] = l+1;
+            dp[i] = x;
+            if(i == len) {
+                len++;
+            }
         }
-        return 0;
+        return len;
     }
 
-    static class Pair{
-        int a;
-        int b;
-        public Pair(int a, int b) {
-            this.a = a;
-            this.b = b;
-        }
-    }
-    static class PairComparator implements Comparator<Pair>{
-        @Override
-        public int compare(Pair o1, Pair o2) {
-            if (o1.a == o2.a){
-                if (o1.b == o2.b){
-                    return 0;
-                }else if (o1.b < o2.b){
-                    return 1;
-                }else {
-                    return -1;  //-1: o1放在前面， 1：o1放在后面  0: 顺序不变
-                }
-            }else if (o1.a < o2.a){
-                return -1;
-            }else {
-                return 1;
-            }
-        }
-    }
 
     public static int maxEnvelopes(int[][] es, int n, int m){
         if (es == null || n < 1 || es[0] == null || m != 2){
             return 0;
         }
-        Pair[] pairs = new Pair[n];
-        for (int i = 0; i < n; i++){
-            pairs[i] = new Pair(es[i][0], es[i][1]);
-        }
-        Arrays.sort(pairs, new PairComparator());
-        int[] ends = new int[n];
-        ends[0] = pairs[0].b;
+        Arrays.sort(es, new Comparator<int[]>() {
+            @Override
+            public int compare(int[] o1, int[] o2) {
+                if (o1[0] == o2[0]){
+                    return o1[1] - o2[1];
+                }else {
+                    return o2[0] - o1[0];
+                }
+            }
+        });
     }
 }
