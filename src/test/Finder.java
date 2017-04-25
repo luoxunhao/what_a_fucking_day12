@@ -31,7 +31,7 @@ public class Finder {
                 str[i] = str[i-1];
             }
         }
-        int lb = -1, ub = n;
+        int lb = 0, ub = n-1;
         while (ub - lb > 1){
             int mid = (lb+ub)/2;
             int cmp = str[mid].compareTo(x);
