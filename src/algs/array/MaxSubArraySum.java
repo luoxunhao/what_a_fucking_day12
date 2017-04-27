@@ -17,4 +17,16 @@ public class MaxSubArraySum {
         }
         return max;
     }
+
+    public static int getMaxSum(int[] arr, int n){
+        int dp = 0;
+        int max = 0;
+        for (int i = 0; i < n ;i++){
+            dp = dp < 0 ? arr[i] : dp + arr[i];
+            max = Math.max(max, dp);
+        }
+        return max;
+    }
+
+
 }
