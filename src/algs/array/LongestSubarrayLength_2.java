@@ -3,9 +3,9 @@ package algs.array;
 import java.util.Scanner;
 
 /**
- * 未排序数组中累加和为指定值得最长子数组长度
+ * 未排序正数数组中累加和为指定值得最长子数组长度
  */
-public class LongestSubarrayLength {
+public class LongestSubarrayLength_2 {
     private static int[] arr = new int[100];
     private static int n, k;
     public static int getMaxLength(int[] arr, int n, int k){

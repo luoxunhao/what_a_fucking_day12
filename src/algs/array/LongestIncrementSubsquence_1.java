@@ -6,7 +6,7 @@ import java.util.Comparator;
 /**
  * Created by lxh on 2017/4/24.
  */
-public class LongestIncrementSubsquence {
+public class LongestIncrementSubsquence_1 {
     public static int getLIS1(int[] arr, int n){
         if (arr == null || n < 1){
             return 0;

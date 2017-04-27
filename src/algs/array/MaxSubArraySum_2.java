@@ -3,7 +3,7 @@ package algs.array;
 /**
  * Created by lxh on 2017/4/24.
  */
-public class MaxSubArraySum {
+public class MaxSubArraySum_2 {
     public static int maxSubSum(int[] arr, int n){
         if (arr == null || n < 1){
             return 0;
