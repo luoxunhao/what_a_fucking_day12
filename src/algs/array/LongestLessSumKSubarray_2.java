@@ -20,10 +20,6 @@ public class LongestLessSumKSubarray_2 {
         for (int i = 0; i < n; i++){
             sum += arr[i];
         }
-    }
-
-    public static int getLessIndex(int[] arr, int int key){
-        int low = 0;
-        int high =
+        return res;
     }
 }

@@ -49,7 +49,7 @@ public class PassRate {
         if (j < num ){
             return 0.0;
         }else{
-            return memo[i][j] = P[i]/100.0 * solve2(i+1,j+1) + (1-P[i])/100.0 * solve2(i+1,j);
+            return memo[i][j] = P[i]/100.0 * solve3(i+1,j+1) + (1-P[i])/100.0 * solve3(i+1,j);
         }
     }
 }
