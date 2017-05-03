@@ -10,7 +10,7 @@ public class BinarySearch {
     private static int[] arr = new int[100];
     public static int binarySearch(int[] arr, int val, int l, int r){
         int low = l;
-        int high = r - 1;
+        int high = r-1;
         while (low <= high){
             int mid = (low + high) >> 1;
             if (arr[mid] >= val){
@@ -19,10 +19,7 @@ public class BinarySearch {
                 low = mid + 1;
             }
         }
-        if (low < r && arr[low] == val){
-            return low;
-        }
-        return -low - 1;
+        return low;
     }
 
     public static void main(String[] args){
