@@ -7,41 +7,7 @@ import java.util.Scanner;
  */
 public class HeapSort {
     private static int[] arr = new int[100]; //假设数据规模 N <= 100
-    private static int[] heap = new int[100]; //最大堆
     private static int n;
-    private static int sz = 0;
-
-    public static void push(int x){
-        int i = sz++;
-        while (i > 0){
-            int p = (i-1)/2;
-            if (heap[p] >= x){
-                break;
-            }
-            heap[i] = heap[p];
-            i = p;
-        }
-        heap[i] = x;
-    }
-
-    public static int pop(){
-        int res = heap[0];
-        int x = heap[--sz];
-        int i = 0;
-        while (i*2 + 1 < sz){
-            int a = i*2 + 1, b = i*2 + 2;
-            if (b < sz && heap[b] > heap[a]){
-                a = b;
-            }
-            if (heap[a] <= x){
-                break;
-            }
-            heap[i]= heap[a];
-            i = a;
-        }
-        heap[i] = x;
-        return res;
-    }
 
     public static void heapInsert(int i){
         while (i > 0){
@@ -98,7 +64,7 @@ public class HeapSort {
             for (int i = 0; i < n; i++){
                 arr[i] = sc.nextInt();
             }
-
+            heapSort(arr);
         }
     }
 }

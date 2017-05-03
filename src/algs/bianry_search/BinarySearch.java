@@ -1,23 +1,39 @@
 package algs.bianry_search;
 
+import java.util.Scanner;
+
 /**
  * Created by lxh on 2017/4/25.
  */
 public class BinarySearch {
-    public static int binarySearch(int[] arr, int n, int val){
-        if (arr == null || n < 1){
-            return -1;
-        }
-        int l = 0;
-        int r = n-1;
-        while (r - l > 1){
-            int mid = (l + r) >> 1;
+    private static int n;
+    private static int[] arr = new int[100];
+    public static int binarySearch(int[] arr, int val, int l, int r){
+        int low = l;
+        int high = r - 1;
+        while (low <= high){
+            int mid = (low + high) >> 1;
             if (arr[mid] >= val){
-                r = mid;
+                high = mid - 1;
             }else {
-                l = mid;
+                low = mid + 1;
             }
         }
-        return r;
+        if (arr[low] == val){
+            return low;
+        }
+        return -low;
+    }
+
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        while (sc.hasNext()){
+            int val = sc.nextInt();
+            n = sc.nextInt();
+            for (int i = 0; i < n; i++){
+                arr[i] = sc.nextInt();
+            }
+            System.out.println(binarySearch(arr,val,0,n));
+        }
     }
 }
