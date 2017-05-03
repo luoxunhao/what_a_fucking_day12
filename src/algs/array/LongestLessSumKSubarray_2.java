@@ -26,18 +26,16 @@ public class LongestLessSumKSubarray_2 {
         for (int i = 0; i < n; i++){
             sum += arr[i];
             int pre = binarySearch(help, 0, n, sum-k);
-            if (pre < 0){
-                pre = -(pre + 1);
-            }
-            int len = pre < 0 ? 0 : i - pre + 1;
+            int len = pre == n ? 0 : i - pre + 1;
             res = Math.max(res, len);
         }
         return res;
     }
 
+    //找到第一个大于等于val的位置
     public static int binarySearch(int[] arr, int l, int r, int val){
         int low = l;
-        int high = r;
+        int high = r - 1;
         while (low <= high){
             int mid = (low + high) >> 1;
             if (arr[mid] >= val){
@@ -46,10 +44,7 @@ public class LongestLessSumKSubarray_2 {
                 low = mid + 1;
             }
         }
-        if (low < r && arr[low] == val){
-            return low;
-        }
-        return -low - 1;
+        return low;
     }
 
     public static void main(String[] args){
