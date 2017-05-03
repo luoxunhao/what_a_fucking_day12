@@ -19,10 +19,10 @@ public class BinarySearch {
                 low = mid + 1;
             }
         }
-        if (arr[low] == val){
+        if (low < r && arr[low] == val){
             return low;
         }
-        return -low;
+        return -low - 1;
     }
 
     public static void main(String[] args){
